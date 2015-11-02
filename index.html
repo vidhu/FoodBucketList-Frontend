@@ -56,7 +56,7 @@
                     $('.searchresults').hide();
                 }
                 $.ajax({
-                    url: "http://fbl.vidhucraft.com/search/" + $('.search').val(),
+                    url: "http://api.fbl.vidhucraft.com/search/" + $('.search').val(),
                     dataType: "jsonp",
                     success: function (response) {
                         $('.searchresults').empty();
