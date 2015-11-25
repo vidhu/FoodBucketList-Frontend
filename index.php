@@ -10,6 +10,6 @@
         <link rel="stylesheet" href="css/custom.css" />
     </head>
     <body>
-    include_once('header.php');
+        <?php include_once('header.php'); ?>
     </body>
 </html>
