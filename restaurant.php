@@ -38,8 +38,6 @@
                 dataType: "jsonp",
                 success: function (response) {
                     $('h2').append(response.name);
-                    $('#info').append("<img src='" + response.snippet_img_url + "'> <br/>");
-                    $('#info').append("description: " + response.snippet_text + "<br/>");
                     $('#info').append("rating: " + response.rating + "<br/>");
                     $('#info').append("review count: " + response.review_count + "<br/>");
                     $('#info').append("phone number: " + response.display_phone + "<br/>");
