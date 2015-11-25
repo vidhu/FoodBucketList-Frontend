@@ -37,13 +37,13 @@
                 url: "http://api.fbl.vidhucraft.com/search/id/" + id,
                 dataType: "jsonp",
                 success: function (response) {
-                    $('h2').append(response[0].name);
-                    $('#info').append("<img src='" + response[0].snippet_img_url + "'> <br/>");
-                    $('#info').append("description: " + response[0].snippet_text + "<br/>");
-                    $('#info').append("rating: " + response[0].rating + "<br/>");
-                    $('#info').append("review count: " + response[0].review_count + "<br/>");
-                    $('#info').append("phone number: " + response[0].display_phone + "<br/>");
-                    $('#info').append("address: \n" + response[0].display_address[0] + "<br/>");
+                    $('h2').append(response.name);
+                    $('#info').append("<img src='" + response.snippet_img_url + "'> <br/>");
+                    $('#info').append("description: " + response.snippet_text + "<br/>");
+                    $('#info').append("rating: " + response.rating + "<br/>");
+                    $('#info').append("review count: " + response.review_count + "<br/>");
+                    $('#info').append("phone number: " + response.display_phone + "<br/>");
+                    $('#info').append("address: <br/>" + response.display_address[0] + "<br/>");
                     $('#info').append(response.display_address[1] + "<br/>");
                     $('#info').append(response.display_address[2] + "<br/>");
                 }
