@@ -9,6 +9,7 @@
         <div class="collapse navbar-collapse" id="navbar">
 
             <ul class="nav navbar-nav">
+                <li><a href="login.php">Log in</a></li>
                 <li><a href="user_account.html">Account</a></li>
                 <li><a href="friends.html">Friends</a></li>
                 <li><a href="Achievements.html">Achievements</a></li>
