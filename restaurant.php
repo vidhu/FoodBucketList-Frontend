@@ -12,9 +12,9 @@
         <script type="text/javascript" 
            src="http://maps.google.com/maps/api/js?sensor=false"></script>
     </head>
-    <body>
+    <body class="container">
         <?php include_once('header.php'); ?>
-
+        <div class="col-offset-6 centered">
         <div id='info'>
             <h2></h2>
             <button id="add" type="button">Add</button><br/>
@@ -77,5 +77,6 @@
                 }
             });
         </script>
+        </div>
     </body>
 </html>
