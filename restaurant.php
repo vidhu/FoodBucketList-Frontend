@@ -14,7 +14,7 @@
 
         <div id='info'>
             <h2></h2>
-            <button id="add" type="button">Add</button>
+            <button id="add" type="button">Add</button><br/>
         </div>
         
         <script type="text/javascript">
@@ -38,7 +38,7 @@
                 url: "http://api.fbl.vidhucraft.com/search/id/" + id,
                 dataType: "jsonp",
                 success: function (response) {
-                    $('h2').append("<a href='" + response.url.replace('\\', '') + "'>" + response.name + "</a>");
+                    $('h2').append("<a href='" + response.url.replace('\\', '') + "' target='_blank'>" + response.name + "</a>");
                     $('#info').append("rating: " + response.rating + "<br/>");
                     $('#info').append("review count: " + response.review_count + "<br/>");
                     $('#info').append("phone number: " + response.display_phone + "<br/>");
