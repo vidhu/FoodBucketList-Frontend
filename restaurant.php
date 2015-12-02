@@ -48,7 +48,15 @@
                     $('#info').append("review count: " + response.review_count + "<br/>");
                     $('#info').append("phone number: " + response.display_phone + "<br/>");
                     $('#info').append("address: <br/>" + response.location.display_address[0] + "<br/>");
-                    $('#info').append(response.location.display_address[1] + "<br/>");
+                    $('#info').append(response.location.display_address[1] + "<br/><br/>");
+                    if (response.reviews.length > 0) {
+                        $('#info').append("<strong>Reviews:</strong></br>");
+                    }
+                    for (var review in response.reviews) {
+                        $('#info').append("rating: " + review.rating + "</br>");
+                        $('#info').append("<img src='" + review.rating_image_url.replace('\\','') + "'></img>");
+                        $('#info').append(review.exerpt);
+                    }
 
                     var coordinates = response.location.coordinate;
                     var myLatLng = new google.maps.LatLng(coordinates.latitude, coordinates.longitude);
