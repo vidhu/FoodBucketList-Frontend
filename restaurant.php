@@ -52,11 +52,11 @@
                     if (response.reviews.length > 0) {
                         $('#info').append("<strong>Reviews:</strong></br>");
                     }
-                    for (var review in response.reviews) {
+                    response.reviews.forEach(function(review) {
                         $('#info').append("rating: " + review.rating + "</br>");
                         $('#info').append("<img src='" + review.rating_image_url.replace('\\','') + "'></img>");
                         $('#info').append(review.exerpt);
-                    }
+                    });
 
                     var coordinates = response.location.coordinate;
                     var myLatLng = new google.maps.LatLng(coordinates.latitude, coordinates.longitude);
