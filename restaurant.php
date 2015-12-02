@@ -38,7 +38,7 @@
                 url: "http://api.fbl.vidhucraft.com/search/id/" + id,
                 dataType: "jsonp",
                 success: function (response) {
-                    $('h2').append("<a href='" + response.url.replace('\\', ''); + "'>" + response.name + "</a>");
+                    $('h2').append("<a href='" + response.url.replace('\\', '') + "'>" + response.name + "</a>");
                     $('#info').append("rating: " + response.rating + "<br/>");
                     $('#info').append("review count: " + response.review_count + "<br/>");
                     $('#info').append("phone number: " + response.display_phone + "<br/>");
