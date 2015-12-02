@@ -41,7 +41,7 @@
                     $('#info').append("rating: " + response.rating + "<br/>");
                     $('#info').append("review count: " + response.review_count + "<br/>");
                     $('#info').append("phone number: " + response.display_phone + "<br/>");
-                    $('#info').append("address: <br/>" + response.display_address[0] + "<br/>");
+                    $('#info').append("address: <br/>" + response.location.display_address[0] + "<br/>");
                     $('#info').append(response.location.display_address[1] + "<br/>");
                     $('#info').append(response.location.display_address[2] + "<br/>");
                 }
