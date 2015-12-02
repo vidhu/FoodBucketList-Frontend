@@ -51,13 +51,21 @@
                     $('#info').append(response.location.display_address[1] + "<br/>");
 
                     var coordinates = response.location.coordinate;
-                    var myOptions = {
-                        zoom: 8,
-                        center: new google.maps.LatLng(coordinates.latitude, coordinates.longitude),
-                        mapTypeId: google.maps.MapTypeId.ROADMAP
-                    };
+                    var myLatLng = new google.maps.LatLng(coordinates.latitude, coordinates.longitude);
 
-                    var map = new google.maps.Map(document.getElementById("map"), myOptions);
+                    // Create a map object and specify the DOM element for display
+                    var map = new google.maps.Map(document.getElementById("map"), {
+                        center: myLatLng,
+                        scrollwheel: false,
+                        zoom: 4
+                    });
+
+                    // Create a marker and set its position
+                    var marker = new google.maps.Marker({
+                        map: map,
+                        position: myLatLng,
+                        title: response.name
+                    })
                 }
             });
         </script>
