@@ -14,7 +14,7 @@
 
         <div class="container">
             <!-- Just demonstrating event listeners -->
-            <div id="demoLoginMsg">
+            <div id="demoLoginMsg" style="display: none;">
                 <code>You are now logged in</code>
                 <code id="demoLoginMsgUsrName"></code>
             </div>
