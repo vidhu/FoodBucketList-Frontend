@@ -8,6 +8,9 @@
         <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css" />
         <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/select2/4.0.0/css/select2.min.css" />
         <link rel="stylesheet" href="css/custom.css" />
+
+        <script type="text/javascript" 
+           src="http://maps.google.com/maps/api/js?sensor=false"></script>
     </head>
     <body>
         <?php include_once('header.php'); ?>
@@ -16,6 +19,8 @@
             <h2></h2>
             <button id="add" type="button">Add</button><br/>
         </div>
+
+        <div id="map" style="width: 400px; height: 300px"></div> 
         
         <script type="text/javascript">
             var getUrlParameter = function getUrlParameter(sParam) {
@@ -44,6 +49,15 @@
                     $('#info').append("phone number: " + response.display_phone + "<br/>");
                     $('#info').append("address: <br/>" + response.location.display_address[0] + "<br/>");
                     $('#info').append(response.location.display_address[1] + "<br/>");
+
+                    var coordinates = response.location.coordinate;
+                    var myOptions = {
+                        zoom: 8,
+                        center: new google.maps.LatLng(coordinates.latitude, coordinates.longitude),
+                        mapTypeId: google.maps.MapTypeId.ROADMAP
+                    };
+
+                    var map = new google.maps.Map(document.getElementById("map"), myOptions);
                 }
             });
         </script>
