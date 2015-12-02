@@ -7,9 +7,10 @@
 
         <!-- nav bar -->
         <div class="collapse navbar-collapse" id="navbar">
-
+            
             <ul class="nav navbar-nav">
-                <li><a href="login.php">Log in</a></li>
+                <li><a id="login_button" href="#" onclick="Auth.login()">Log in</a></li>
+                <li><a id="logout_button" href="#" onclick="Auth.logout()" style="display: none;">Log Out</a></li>
                 <li><a href="user_account.html">Account</a></li>
                 <li><a href="friends.html">Friends</a></li>
                 <li><a href="Achievements.html">Achievements</a></li>
@@ -37,7 +38,7 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-3-typeahead/3.1.1/bootstrap3-typeahead.min.js" type="text/javascript"></script>
 <script src="https://cdn.rawgit.com/twitter/typeahead.js/master/dist/bloodhound.min.js" type="text/javascript"></script>
-
+<script src="js/auth.js" type="text/javascript"></script>
 <script type="text/javascript">
     $('.search').on('input propertychange paste', function () {
         if ($('.search').val().length === 0) {

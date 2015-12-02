@@ -11,5 +11,30 @@
     </head>
     <body>
         <?php include_once('header.php'); ?>
+
+        <div class="container">
+            <!-- Just demonstrating event listeners -->
+            <div id="demoLoginMsg">
+                <code>You are now logged in</code>
+                <code id="demoLoginMsgUsrName"></code>
+            </div>
+        </div>
+
+        <script type="text/javascript">
+            //Page specific functions
+            function onLogin(e) {
+                console.log(e.userID);
+                Auth.getUserInfo(function(user){
+                    $('#demoLoginMsgUsrName').text(user.name);
+                    $('#demoLoginMsg').show();
+                });
+            }
+            function onLogout(e) {
+                $('#demoLoginMsg').hide();
+            }
+
+            document.body.addEventListener("onFBLogin", onLogin, false);
+            document.body.addEventListener("onFBLogout", onLogout, false);
+        </script>
     </body>
 </html>
