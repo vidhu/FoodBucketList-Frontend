@@ -18,7 +18,7 @@
         <div class="container">
             <div class="row">
                 <h2></h2>
-                <input id="add" type="bsubmit" class = "btn btn-default" value="Add"><br/>
+                <input id="add" type="submit" class = "btn btn-default" value="Add"><br/>
                 <div id="info" class="col-md-8"></div>
                 <div id="map" style="width: 400px; height: 300px" class="col-md-4"></div>
             </div>
