@@ -49,6 +49,7 @@
                         FB.getAccessToken(function(c) { 
                             accessToken = c; 
                         });
+                        console.log('ugh');
                     });
                 });
 
