@@ -14,15 +14,20 @@
     </head>
     <body>
         <?php include_once('header.php'); ?>
+
         <div class="container">
             <div class="row">
                 <h2></h2>
-                <button id="add" type="button" class = "btn btn-default">Add</button><br/>
+                <input id="add" type="bsubmit" class = "btn btn-default" value="Add"><br/>
                 <div id="info" class="col-md-8"></div>
                 <div id="map" style="width: 400px; height: 300px" class="col-md-4"></div>
             </div>
 
             <script type="text/javascript">
+                $(document).ready(function() {
+                    $("#add").click()
+                });
+
                 var getUrlParameter = function getUrlParameter(sParam) {
                     var sPageURL = window.location.search.substring(1),
                             sURLVariables = sPageURL.split('&'),
@@ -53,7 +58,7 @@
                             $('#info').append("<strong>Reviews:</strong></br>");
 
                         response.reviews.forEach(function(review) {
-                            $('#info').append("rating: <img src='" + review.rating_image_url.replace('\\','') + "'></img></br>");
+                            $('#info').append("<strong>Rating:</strong> <img src='" + review.rating_image_url.replace('\\','') + "'></img></br>");
                             $('#info').append(review.excerpt);
                         });
                     }
