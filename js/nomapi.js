@@ -1,4 +1,4 @@
-var Nom = (function(accessToken){
+var Nom = function(accessToken){
     
     var endPoint = "http://api.fbl.vidhucraft.com";
     
@@ -14,7 +14,7 @@ var Nom = (function(accessToken){
     };
     
     //Bucket API
-    var Bucket = {
+    this.Bucket = {
         getBuckets: function(callback){
             var resource = "/bucket";
             var method = "GET";
@@ -59,9 +59,5 @@ var Nom = (function(accessToken){
             makeRequest(resource, method, null, callback);
         }  
     };
-    
-    return {
-        Bucket: Bucket
-    };
-})("accessToken");
+};
 
