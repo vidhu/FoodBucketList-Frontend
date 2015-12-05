@@ -22,7 +22,7 @@ var Nom = function(accessToken){
             var data = {
                 accessToken: accessToken
             };
-            makeRequest(resource, method, null, callback);
+            makeRequest(resource, method, data, callback);
         },
         addBucket: function(name, description, callback){
             var resource = "/bucket";
