@@ -25,11 +25,9 @@
             <div class="navbar-form navbar-right form-group">
                 <div class="input-group">
                     <input type="text" class="form-control search" size="40" autocomplete="off" placeholder="Search for your favorite food...">
+                    <span class="glyphicon glyphicon-search"></span>
                     <ul class="dropdown-menu searchresults" role="listbox" style="top: 34px; left: 0px;">
                     </ul>
-                    <span class="input-group-btn">
-                        <button class="btn btn-default" type="button">Go!</button>
-                    </span>
                 </div>
             </div>
 
