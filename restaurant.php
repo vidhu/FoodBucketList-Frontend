@@ -16,11 +16,19 @@
         <?php include_once('header.php'); ?>
 
         <div class="container">
+            <div class="container">
             <div class="row">
-                <h2></h2>
-                <input id="add" type="submit" class = "btn btn-default" value="Add"><br/>
-                <div id="info" class="col-md-8"></div>
-                <div id="map" style="width: 400px; height: 300px; float: center" class="col-md-4"></div>
+                
+                
+                <div id="info" class="col-md-6">
+                <h2><div style="position: relative; float: right; text-align: left">
+                <input id="add" type="submit" class = "btn btn-default" value="Add" style="height:40px; width:55px"><br/>
+                </div></h2>
+                	
+                </div>
+                
+                <div id="buffer" class="col-md-1"></div>
+                <div id="map" style="width: 400px; height: 300px; float: center" class="col-md-3"></div>
             </div>
 
             <script type="text/javascript">
