@@ -44,7 +44,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-3-typeahead/3.1.1/bootstrap3-typeahead.min.js" type="text/javascript"></script>
 <script src="https://cdn.rawgit.com/twitter/typeahead.js/master/dist/bloodhound.min.js" type="text/javascript"></script>
 <script src="js/auth.js" type="text/javascript"></script>
-<script src="nomapi.js" type="text/javascript"></script>
+<script src="js/nomapi.js" type="text/javascript"></script>
 <script type="text/javascript">
     $('.search').on('input propertychange paste', function () {
         if ($('.search').val().length === 0) {
