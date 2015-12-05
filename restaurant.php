@@ -41,20 +41,26 @@
                 var id = getUrlParameter('id');
 
                 $(document).ready(function() {
-                    var accessToken;
-                    FB.getAccessToken(function(c) { accessToken = c; });
                     
-                    $("#add").click(function(){
-                        console.log("clicked");
-                        console.log(accessToken);
-                        var nom = Nom(accessToken);
 
-                        var bucket_id;
-                        nom.getBuckets(function(a){
-                            console.log('getting buckets');
-                            bucket_id = a.result[0].id;
+                    $("#add").click(function(){
+                        var accessToken;
+                        FB.getAccessToken(function(c) { 
+                            accessToken = c; 
+
+                            console.log("clicked");
+                            console.log(accessToken);
+                            var nom = Nom(accessToken);
+
+                            var bucket_id;
+                            nom.getBuckets(function(a){
+                                console.log('getting buckets');
+                                bucket_id = a.result[0].id;
+                                nom.addItem(bucket_id, id, function(){
+                                    console.log('added'); 
+                                });
+                            });
                         });
-                        nom.addItem(bucket_id, id, function(){ console.log('added'); });
                     });
                 });
 
