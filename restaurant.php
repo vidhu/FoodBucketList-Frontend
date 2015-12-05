@@ -39,9 +39,9 @@
                     }
                 };
                 
+                var id = getUrlParameter('id');
 
                 $(document).ready(function() {
-                    var id = getUrlParameter('id');
 
                     $("#add").click(function(){
                         var accessToken = FB.getAuthResponse()['accessToken'];
@@ -55,6 +55,7 @@
                             bucket_id = a.result[0].id;
                         });
 
+                        var id = getUrlParameter('id');
                         nom.Bucket.addItem(10, id, function(){
                             console.log('added'); 
                         });
