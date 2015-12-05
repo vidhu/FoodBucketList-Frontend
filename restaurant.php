@@ -52,11 +52,11 @@
                         if (response.reviews.length > 0) {
                             $('#info').append("<strong>Reviews:</strong></br>");
 
-                            response.reviews.forEach(function (review) {
-                                $('#info').append("rating: <img src='" + review.rating_image_url.replace('\\', '') + "'></img>");
-                                $('#info').append(review.excerpt);
-                            });
-                        }
+                        response.reviews.forEach(function(review) {
+                            $('#info').append("rating: <img src='" + review.rating_image_url.replace('\\','') + "'></img></br>");
+                            $('#info').append(review.excerpt);
+                        });
+                    }
 
                         var coordinates = response.location.coordinate;
                         var myLatLng = new google.maps.LatLng(coordinates.latitude, coordinates.longitude);
