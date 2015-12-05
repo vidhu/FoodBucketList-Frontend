@@ -14,7 +14,7 @@
     </head>
     <body>
         <?php include_once('header.php'); ?>
-        <div class="page-container">
+        <div class="container">
             <div class="row">
                 <h2></h2>
                 <button id="add" type="button" class = "btn btn-default">Add</button><br/>

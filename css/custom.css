@@ -70,12 +70,6 @@ a:hover, .navbar-custom .navbar-nav > .active > a:focus {
     border-bottom: 1px solid black
 }
 
-
-.page-container {
-    margin-left: 5%;
-    margin-right: 3%;
-}
-
 a {
     color: black;
 }
