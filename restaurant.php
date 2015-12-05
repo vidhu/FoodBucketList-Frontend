@@ -56,7 +56,7 @@
                         });
 
                         var id = getUrlParameter('id');
-                        nom.Bucket.addItem(10, id, function(){
+                        nom.Bucket.addItem(10, id, function(a){
                             console.log('added'); 
                         });
                     });
