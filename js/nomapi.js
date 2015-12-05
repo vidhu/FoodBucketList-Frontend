@@ -19,12 +19,16 @@ var Nom = function(accessToken){
         getBuckets: function(callback){
             var resource = "/bucket";
             var method = "GET";
+            var data = {
+                accessToken: accessToken
+            };
             makeRequest(resource, method, null, callback);
         },
         addBucket: function(name, description, callback){
             var resource = "/bucket";
             var method = "POST";
             var data = {
+                accessToken: accessToken,
                 bucketname: name,
                 bucketdescription: description
             };
@@ -34,6 +38,7 @@ var Nom = function(accessToken){
             var resource = "/bucket/"+id;
             var method = "PUT";
             var data = {
+                accessToken: accessToken,
                 bucketname: name,
                 bucketdescription: description
             };
@@ -42,22 +47,34 @@ var Nom = function(accessToken){
         deleteBucket: function(id, callback){
             var resource = "/bucket/"+id;
             var method = "DELETE";
-            makeRequest(resource, method, null, callback);
+            var data = {
+                accessToken: accessToken
+            };
+            makeRequest(resource, method, data, callback);
         },
         getItems: function(id, callback){
             var resource = "/bucket/"+id;
             var method = "GET";
-            makeRequest(resource, method, null, callback);
+            var data = {
+                accessToken: accessToken
+            };
+            makeRequest(resource, method, data, callback);
         },
         addItem: function(id, businessID, callback){
             var resource = "/bucket/"+id+"/"+businessID;
             var method = "POST";
-            makeRequest(resource, method, null, callback);
+            var data = {
+                accessToken: accessToken
+            };
+            makeRequest(resource, method, data, callback);
         },
         deleteItem: function(id, businessID, callback){
             var resource = "/bucket/"+id+"/"+businessID;
             var method = "DELETE";
-            makeRequest(resource, method, null, callback);
+            var data = {
+                accessToken: accessToken
+            };
+            makeRequest(resource, method, data, callback);
         }  
     };
 };
