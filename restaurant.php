@@ -50,10 +50,10 @@
                         var nom = new Nom(accessToken);
 
                         var bucket_id;
-                        nom.getBuckets(function(a){
+                        nom.Bucket.getBuckets(function(a){
                             console.log('getting buckets');
                             bucket_id = a.result[0].id;
-                            nom.addItem(bucket_id, id, function(){
+                            nom.Bucket.addItem(bucket_id, id, function(){
                                 console.log('added'); 
                             });
                         });
