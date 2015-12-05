@@ -41,9 +41,10 @@
                 var id = getUrlParameter('id');
 
                 $(document).ready(function() {
+                    var accessToken;
+                    FB.getAccessToken(function(c) { accessToken = c; });
+                    
                     $("#add").click(function(){
-                        var accessToken;
-                        FB.getAccessToken(function(c) { accessToken = c; });
                         console.log("clicked");
                         console.log(accessToken);
                         var nom = Nom(accessToken);
