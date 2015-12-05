@@ -18,14 +18,14 @@
         	<div class="row">
         		<h2></h2>
         		<button id="add" type="button" class = "btn btn-default">Add</button><br/>
-        		<!-- <div id='info'> --!>
+        		<!-- <div id='info'> -->
         		<div id = "info" class="col-md-8"></div>
        		
     
 			
 		
 
-    	<!-- <div id="map" style="width: 400px; height: 300px"></div> --!>
+    	<!-- <div id="map" style="width: 400px; height: 300px"></div> -->
         	<div id = "map" style="width: 400px; height: 300px" class="col-md-4"></div>
         	</div>
         
