@@ -1,8 +1,8 @@
-<nav class="navbar navbar-default">
+<nav class="navbar-custom">
     <div class="container-fluid">
         <!-- Using a list glyphicon as the logo -->
         <div class="navbar-header">
-            <a class="navbar-brand" href="#"><span class="glyphicon glyphicon-list"></span></a>
+            <a class="navbar-brand" href="index.php"><span class="glyphicon glyphicon-list"></span></a>
         </div>
 
         <!-- nav bar -->
@@ -10,11 +10,16 @@
             
             <ul class="nav navbar-nav">
                 <li><a id="login_button" href="#" onclick="Auth.login()">Log in</a></li>
+                <li class="divider-vertical"></li>
                 <li><a id="logout_button" href="#" onclick="Auth.logout()" style="display: none;">Log Out</a></li>
+                <li class="divider-vertical"></li>
                 <li><a href="user_account.html">Account</a></li>
+                <li class="divider-vertical"></li>
                 <li><a href="friends.html">Friends</a></li>
+                <li class="divider-vertical"></li>
                 <li><a href="Achievements.html">Achievements</a></li>
-                <li><a href="list.html">Your Bucket List</a></li>
+                <li class="divider-vertical"></li>
+                <li><a href="list.php">Your Bucket List</a></li>
             </ul>
 
             <div class="navbar-form navbar-right form-group">

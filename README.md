@@ -6,5 +6,5 @@ This is the front end for Food Bucket List. It is built using the standard HTML,
 ## Installation
 ```
 cd website-folder/
-git clone https://github.com/vidhu/FoodBucketList-Frontend.git
+git clone https://github.com/vidhu/FoodBucketList-Frontend.git .
 ```
