@@ -47,7 +47,7 @@
                         var accessToken = FB.getAuthResponse()['accessToken'];
                         console.log("clicked");
                         console.log(accessToken);
-                        var nom = Nom(accessToken);
+                        var nom = new Nom(accessToken);
 
                         var bucket_id;
                         nom.getBuckets(function(a){
