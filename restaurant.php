@@ -44,13 +44,19 @@
                     
 
                     $("#add").click(function(){
-                        var accessToken;
+                        var accessToken = FB.getAuthResponse()['accessToken'];
                         console.log("clicked");
-                        FB.getAccessToken(function(c) { 
-                            console.log("WHY");
-                            accessToken = c; 
+                        console.log(accessToken);
+                        var nom = Nom(accessToken);
+
+                        var bucket_id;
+                        nom.getBuckets(function(a){
+                            console.log('getting buckets');
+                            bucket_id = a.result[0].id;
+                            nom.addItem(bucket_id, id, function(){
+                                console.log('added'); 
+                            });
                         });
-                        console.log('ugh');
                     });
                 });
 
