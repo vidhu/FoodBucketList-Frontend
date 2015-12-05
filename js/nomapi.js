@@ -7,6 +7,7 @@ var Nom = function(accessToken){
             url: endPoint + resource,
             type: method,
             data: data,
+            dataType: "jsonp",
             success: function (data) {
                 callback(data);
             }
