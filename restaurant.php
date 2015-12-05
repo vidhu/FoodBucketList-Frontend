@@ -20,7 +20,7 @@
                 <h2></h2>
                 <input id="add" type="submit" class = "btn btn-default" value="Add"><br/>
                 <div id="info" class="col-md-8"></div>
-                <div id="map" style="width: 400px; height: 300px, float: right" class="col-md-4"></div>
+                <div id="map" style="width: 400px; height: 300px; float: right" class="col-md-4"></div>
             </div>
 
             <script type="text/javascript">
@@ -50,10 +50,10 @@
                         var nom = new Nom(accessToken);
 
                         var bucket_id;
-                        nom.getBuckets(function(a){
+                        nom.Bucket.getBuckets(function(a){
                             console.log('getting buckets');
                             bucket_id = a.result[0].id;
-                            nom.addItem(bucket_id, id, function(){
+                            nom.Bucket.addItem(bucket_id, id, function(){
                                 console.log('added'); 
                             });
                         });
