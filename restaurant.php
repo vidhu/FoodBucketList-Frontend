@@ -25,7 +25,9 @@
 
             <script type="text/javascript">
                 $(document).ready(function() {
-                    $("#add").click()
+                    $("#add").click(function(){
+                        console.log("clicked");
+                    });
                 });
 
                 var getUrlParameter = function getUrlParameter(sParam) {
