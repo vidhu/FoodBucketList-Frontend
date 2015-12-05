@@ -74,6 +74,17 @@ a {
     color: black;
 }
 
+input[type=submit]
+{
+    /* your styles here, You can just increase its font size below*/
+    font-size: 16px; 
+    font-family: arial; 
+    font-weight: bold;
+    border-style: solid;
+	border-width: 2px;
+	border-color: black;
+}
+
 body {
     /*
     background: #C02425; /* fallback for old browsers 
