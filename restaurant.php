@@ -38,10 +38,10 @@
                         }
                     }
                 };
-                var id = getUrlParameter('id');
+                
 
                 $(document).ready(function() {
-                    
+                    var id = getUrlParameter('id');
 
                     $("#add").click(function(){
                         var accessToken = FB.getAuthResponse()['accessToken'];
@@ -53,9 +53,10 @@
                         nom.Bucket.getBuckets(function(a){
                             console.log('getting buckets');
                             bucket_id = a.result[0].id;
-                            nom.Bucket.addItem(bucket_id, id, function(){
-                                console.log('added'); 
-                            });
+                        });
+
+                        nom.Bucket.addItem(10, id, function(){
+                            console.log('added'); 
                         });
                     });
                 });
