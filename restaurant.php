@@ -18,22 +18,12 @@
         <div class="container">
             <div class="row">
                 <h2></h2>
-                <colgroup>
-                    <input id="add" type="submit" class = "btn btn-default" value="Add"><br/>
-                    <div id="info" class="col-md-8"></div>
-                </colgroup>
-                <colgroup>
-                    <div id="map" style="width: 400px; height: 300px; float: right" class="col-md-4"></div>
-                </colgroup>
+                <input id="add" type="submit" class = "btn btn-default" value="Add"><br/>
+                <div id="info" class="col-md-8"></div>
+                <div id="map" style="width: 400px; height: 300px, float: right" class="col-md-4"></div>
             </div>
 
             <script type="text/javascript">
-                $(document).ready(function() {
-                    $("#add").click(function(){
-                        console.log("clicked");
-                    });
-                });
-
                 var getUrlParameter = function getUrlParameter(sParam) {
                     var sPageURL = window.location.search.substring(1),
                             sURLVariables = sPageURL.split('&'),
@@ -49,6 +39,23 @@
                     }
                 };
                 var id = getUrlParameter('id');
+
+                $(document).ready(function() {
+                    $("#add").click(function(){
+                        var accessToken;
+                        FB.getAccessToken(function(c) { accessToken = c; });
+                        console.log("clicked");
+                        console.log(c);
+                        var nom = Nom(accessToken);
+
+                        var bucket_id;
+                        nom.getBuckets(function(a){
+                            console.log('getting buckets');
+                            bucket_id = a.result[0].id;
+                        });
+                        nom.addItem(bucket_id, id, function(){ console.log('added'); });
+                    });
+                });
 
                 $.ajax({
                     url: "http://api.fbl.vidhucraft.com/search/id/" + id,
