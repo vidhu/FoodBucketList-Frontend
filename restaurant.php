@@ -41,19 +41,22 @@
                 var id = getUrlParameter('id');
 
                 $(document).ready(function() {
+                    
+
                     $("#add").click(function(){
-                        var accessToken;
-                        FB.getAccessToken(function(c) { accessToken = c; });
+                        var accessToken = FB.getAuthResponse()['accessToken'];
                         console.log("clicked");
-                        console.log(c);
-                        var nom = Nom(accessToken);
+                        console.log(accessToken);
+                        var nom = new Nom(accessToken);
 
                         var bucket_id;
                         nom.getBuckets(function(a){
                             console.log('getting buckets');
                             bucket_id = a.result[0].id;
+                            nom.addItem(bucket_id, id, function(){
+                                console.log('added'); 
+                            });
                         });
-                        nom.addItem(bucket_id, id, function(){ console.log('added'); });
                     });
                 });
 
