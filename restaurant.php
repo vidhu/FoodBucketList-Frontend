@@ -18,9 +18,13 @@
         <div class="container">
             <div class="row">
                 <h2></h2>
-                <input id="add" type="submit" class = "btn btn-default" value="Add"><br/>
-                <div id="info" class="col-md-8"></div>
-                <div id="map" style="width: 400px; height: 300px; float: right" class="col-md-4"></div>
+                <colgroup>
+                    <input id="add" type="submit" class = "btn btn-default" value="Add"><br/>
+                    <div id="info" class="col-md-8"></div>
+                </colgroup>
+                <colgroup>
+                    <div id="map" style="width: 400px; height: 300px; float: right" class="col-md-4"></div>
+                </colgroup>
             </div>
 
             <script type="text/javascript">
