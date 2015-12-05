@@ -39,6 +39,9 @@ var Auth = (function () {
         },
         getUserInfo: function (callback) {
             FB.api('/me', callback);
+        },
+        getUserAccessToken: function(callback){
+            FB.getAccessToken(callback);
         }
     };
 })();
