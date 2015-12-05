@@ -47,6 +47,7 @@
                         var accessToken;
                         console.log("clicked");
                         FB.getAccessToken(function(c) { 
+                            console.log("WHY");
                             accessToken = c; 
                         });
                         console.log('ugh');
