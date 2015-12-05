@@ -27,49 +27,48 @@ input-mini{
 @import "bootstrap";
 
 .navbar-custom .navbar-nav > li > a:hover, .navbar-custom .navbar-nav > li > a:focus {
-color: #000;  
-font-weight:bold; /*Sets the text hover color on navbar*/
+    text-shadow:0px 0px 1px black;
 }
 
 .navbar-custom .navbar-header > a {
-color: white;
+    color: white;
 }
 
 .navbar-custom .navbar-nav > .active > a, .navbar-custom .navbar-nav > .active >   
- a:hover, .navbar-custom .navbar-nav > .active > a:focus {
-color: white; /*BACKGROUND color for active*/
-background-color: #030033;
+a:hover, .navbar-custom .navbar-nav > .active > a:focus {
+    color: white; /*BACKGROUND color for active*/
+    background-color: #030033;
 }
 
 .navbar-custom .navbar-header > a {
-	color: black;
-	font-size: 120%;
+    color: black;
+    font-size: 120%;
 }
 
-  .navbar-custom {
+.navbar-custom {
     background-color: transparent;
     border-color: #030033;
 }
 
-  .dropdown-menu > li > a:hover,
-   .dropdown-menu > li > a:focus {
+.dropdown-menu > li > a:hover,
+.dropdown-menu > li > a:focus {
     color: #262626;
-   text-decoration: none;
-  background-color: #66CCFF;  /*change color of links in drop down here*/
-   }
+    text-decoration: none;
+    background-color: #66CCFF;  /*change color of links in drop down here*/
+}
 
- .nav > li > a:hover,
- .nav > li > a:focus {
+.nav > li > a:hover,
+.nav > li > a:focus {
     text-decoration: none;
     background-color: transparent; /*Change rollover cell color here*/
-  }
+}
 
 
-  .navbar-custom .navbar-nav > li > a {
-   font-size: 120%;
-   color: black; /*Change active text color here*/
-   border-bottom: 1px solid black
-    }
+.navbar-custom .navbar-nav > li > a {
+    font-size: 120%;
+    color: black; /*Change active text color here*/
+    border-bottom: 1px solid black
+}
 
 
 .page-container {
@@ -78,14 +77,14 @@ background-color: #030033;
 }
 
 a {
-	color: black;
-	}
+    color: black;
+}
 
 body {
-	/*
-	background: #C02425; /* fallback for old browsers 
-	background: -webkit-linear-gradient(to left top, #C02425 , #F0CB35); /* Chrome 10-25, Safari 5.1-6 
-	background: linear-gradient(to left, #C02425 , #F0CB35); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-	
-	
+    /*
+    background: #C02425; /* fallback for old browsers 
+    background: -webkit-linear-gradient(to left top, #C02425 , #F0CB35); /* Chrome 10-25, Safari 5.1-6 
+    background: linear-gradient(to left, #C02425 , #F0CB35); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+
 }
