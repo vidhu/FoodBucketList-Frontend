@@ -61,6 +61,15 @@
                         nom.Bucket.getBuckets(function(a){
                             console.log('getting buckets');
                             bucket_id = a.result[0].id;
+                            if (a.success) {
+                                console.log("in here");
+                                bucket_id = a.result[0].id;
+                            } else {
+                                console.log("was not success");
+                                nom.Bucket.addBucket(user.name, "hungry", function(b) {
+                                    bucket_id = b.result;
+                                });
+                            }
                         });
 
                         var id = getUrlParameter('id');
