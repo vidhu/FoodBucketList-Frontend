@@ -43,9 +43,14 @@
             function onLogout(e) {
                 $('#demoLoginMsg').hide();
             }
+            
+            function onFbSDKLoad(e){
+                alert("Facebook SDK loaded");
+            }
 
             document.body.addEventListener("onFBLogin", onLogin, false);
             document.body.addEventListener("onFBLogout", onLogout, false);
+            document.body.addEventListener("onFBSdkLoad", onFbSDKLoad, false);
             
 
             console.log("in here");
