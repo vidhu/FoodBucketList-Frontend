@@ -40,10 +40,19 @@
                 var bucket_id;
                 nom.Bucket.getBuckets(function(a){
                     console.log('getting buckets');
-                    bucket_id = a.result[0].id;
+                    if (a.success) {
+                        bucket_id = a.result[0].id;
+                    } else {
+                        nom.Bucket.addBucket(user.name, "hungry", function(b) {
+                            console.log(b);
+                        });
+                    }
                 });
                 nom.Bucket.getItems(bucket_id, function(a) {
                     console.log(a);
+                    a.forEach(function(restaurant) {
+                        $('#restaurants').append()
+                    });
                 });
             }
 
