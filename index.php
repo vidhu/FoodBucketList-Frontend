@@ -35,8 +35,6 @@
                     $('#demoLoginMsg').show();
                 });
                 accessToken = FB.getAuthResponse()['accessToken'];
-
-                console.log(accessToken);
             }
 
 
@@ -46,7 +44,8 @@
             
             function onFbSDKLoad(e){
                 console.log("sdk loaded");
-                accessToken = FB.getAuthResponse()['accessToken'];
+                console.log(FB.getAccessToken());
+                accessToken = FB.getAccessToken();
                 var nom = new Nom(accessToken);
 
                 var bucket_id;
