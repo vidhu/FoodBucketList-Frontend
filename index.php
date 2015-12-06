@@ -18,35 +18,35 @@
                 <code>You are now logged in</code>
                 <code id="demoLoginMsgUsrName"></code>
             </div>
-        </div>
 
-        <div class="check-container">
-            <h1 style="font-family: Geneva">Your Food Bucketlist!</h1>
-            <h4 style="font-family: Geneva"><em>Check off the restaurant(s) that you have visited</em></h3>
-            
-            <div class="checkbox">
-                <label>
-                  <input type="checkbox"> One! </input>
-                  <button class="glyphicon glyphicon-remove-circle" style = "color: red; font-size: 18px;"></button>
-                </label>
-              </div>
-              
-            <div class="checkbox">
-                <label>
-                  <input type="checkbox"> Two! </input>
-                  <button class="glyphicon glyphicon-remove-circle" style = "color: red; font-size: 18px;"></button>
-                </label>
-            </div>
-              
-            <div class="checkbox">
-                <label>
-                  <input type="checkbox"> Three! </input>
-                  <button class="glyphicon glyphicon-remove-circle" style = "color: red; font-size: 18px;"></button>
-                </label>
-            </div>
-      
-            <div align="center">
-                <input type="button" name="button" value="Check Off" id="button" onclick="javascript:removeItem();"/>
+            <div class="check-container">
+                <h1 style="font-family: Geneva">Your Food Bucketlist!</h1>
+                <h4 style="font-family: Geneva"><em>Check off the restaurant(s) that you have visited</em></h3>
+                
+                <div class="checkbox">
+                    <label>
+                      <input type="checkbox"> One! </input>
+                      <button class="glyphicon glyphicon-remove-circle" style = "color: red; font-size: 18px; background: none; border: 0; outline: none"></button>
+                    </label>
+                  </div>
+                  
+                <div class="checkbox">
+                    <label>
+                      <input type="checkbox"> Two! </input>
+                      <button class="glyphicon glyphicon-remove-circle" style = "color: red; font-size: 18px; background: none; border: 0; outline: none"></button>
+                    </label>
+                </div>
+                  
+                <div class="checkbox">
+                    <label>
+                      <input type="checkbox"> Three! </input>
+                      <button class="glyphicon glyphicon-remove-circle" style = "color: red; font-size: 18px; background: none; border: 0; outline: none"></button>
+                    </label>
+                </div>
+          
+                <div align="center">
+                    <input type="button" name="button" value="Check Off" id="button" onclick="javascript:removeItem();"/>
+                </div>
             </div>
         </div>
         
