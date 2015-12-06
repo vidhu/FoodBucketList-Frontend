@@ -15,61 +15,39 @@
         <div class="container">
             <!-- Just demonstrating event listeners -->
             <div id="demoLoginMsg" style="display: none;">
-                <code>You are now logged in</code>
-                <code id="demoLoginMsgUsrName"></code>
-            </div>
-
-            <div class="check-container">
-                <h1 style="font-family: Geneva">Your Food Bucketlist!</h1>
-                <h4 style="font-family: Geneva"><em>Check off the restaurant(s) that you have visited</em></h3>
-                
-                <div class="checkbox">
-                    <label>
-                      <input type="checkbox"> One! </input>
-                      <button class="glyphicon glyphicon-remove-circle" style = "color: red; font-size: 18px; background: none; border: 0; outline: none"></button>
-                    </label>
-                  </div>
-                  
-                <div class="checkbox">
-                    <label>
-                      <input type="checkbox"> Two! </input>
-                      <button class="glyphicon glyphicon-remove-circle" style = "color: red; font-size: 18px; background: none; border: 0; outline: none"></button>
-                    </label>
-                </div>
-                  
-                <div class="checkbox">
-                    <label>
-                      <input type="checkbox"> Three! </input>
-                      <button class="glyphicon glyphicon-remove-circle" style = "color: red; font-size: 18px; background: none; border: 0; outline: none"></button>
-                    </label>
-                </div>
-          
-                <div align="center">
-                    <input type="button" name="button" value="Check Off" id="button" onclick="javascript:removeItem();"/>
-                </div>
-            </div>
+                <h1 id="demoLoginMsgUsrName"></h1>
+                <div class="check-container">
+                    <ul id="restaurants">
+                    </ul>
+                </div>   
+            </div>    
         </div>
         
-        <script>
-        function removeItem() {
-            var x = document.getElementsByTagName("input");
-                for(i = 0; i < x.length; i++) {
-                    if (x[i].checked) {
-                        x[i].parentNode.removeChild(x[i]);
-                    }
-                }
-        }
-        </script>
 
         <script type="text/javascript">
             //Page specific functions
             function onLogin(e) {
                 console.log(e.userID);
                 Auth.getUserInfo(function(user){
-                    $('#demoLoginMsgUsrName').text(user.name);
+                    $('#demoLoginMsgUsrName').text(user.name + "'s Bucketlist");
                     $('#demoLoginMsg').show();
                 });
+                var accessToken = FB.getAuthResponse()['accessToken'];
+
+                console.log(accessToken);
+                var nom = new Nom(accessToken);
+
+                var bucket_id;
+                nom.Bucket.getBuckets(function(a){
+                    console.log('getting buckets');
+                    bucket_id = a.result[0].id;
+                });
+                nom.Bucket.getItems(bucket_id, function(a) {
+                    console.log(a);
+                });
             }
+
+
             function onLogout(e) {
                 $('#demoLoginMsg').hide();
             }
