@@ -2,7 +2,7 @@
     <div class="container-fluid">
         <!-- Using a list glyphicon as the logo -->
         <div class="navbar-header">
-            <a class="navbar-brand" href="index.php">Home</a>
+            <a class="navbar-brand" href="index.php"><span>glyphicon glyphicon-home</span></a>
         </div>
 
         <!-- nav bar -->
