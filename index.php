@@ -46,7 +46,7 @@
 
             document.body.addEventListener("onFBLogin", onLogin, false);
             document.body.addEventListener("onFBLogout", onLogout, false);
-            
+
 
             console.log("in here");
             accessToken = FB.getAuthResponse()['accessToken'];
@@ -75,14 +75,21 @@
                             url: "http://api.fbl.vidhucraft.com/search/id/" + restaurant,
                             dataType: "jsonp",
                             success: function (response) {
-                                $('#restaurants').append("<div class='item'><li><input id='" + restaurant + "' type='checkbox' value='" + response.name + "'> ");
+                                $('#restaurants').append("<div class='item'><li><input class='check' id='" + restaurant + "' type='checkbox' value='" + response.name + "'> ");
                                 $('#restaurants').append("<label for='" + restaurant + "'>" + response.name + "</label> </li></div>");
                             }
                         });
                     });
                 });
             });
-
+            
+            $(document).ready(function() {
+                $(":checkbox").change(function() {
+                    nom.Bucket.deleteItem(bucket_id, this.id, function(a) {
+                        console.log("deleted " + this.id);
+                    });
+                });
+            });
 
         </script>
     </body>
