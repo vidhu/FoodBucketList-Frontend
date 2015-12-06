@@ -47,7 +47,14 @@
             document.body.addEventListener("onFBLogin", onLogin, false);
             document.body.addEventListener("onFBLogout", onLogout, false);
 
-            $(document).ready(function() {
+            window.fbAsyncInit = function() {
+                FB.init({
+                    appId      : '1206232049392333', // App ID
+                    status     : true, // check login status
+                    cookie     : true, // enable cookies to allow the server to access the session
+                    xfbml      : true  // parse XFBML
+                });
+
                 console.log("in here");
                 accessToken = FB.getAuthResponse()['accessToken'];
                 var nom = new Nom(accessToken);
@@ -82,7 +89,16 @@
                         });
                     });
                 });
-            });
+            };
+
+            // Load the SDK Asynchronously
+            (function(d){
+                var js, id = 'facebook-jssdk'; if (d.getElementById(id)) {return;}
+                js = d.createElement('script'); js.id = id; js.async = true;
+                js.src = "//connect.facebook.net/en_US/all.js";
+                d.getElementsByTagName('head')[0].appendChild(js);
+            }(document));
+            
         </script>
     </body>
 </html>
