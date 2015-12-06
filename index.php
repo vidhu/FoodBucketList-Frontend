@@ -24,36 +24,19 @@
         </div>
         
 
+
         <script type="text/javascript">
             //Page specific functions
+            var accessToken;
             function onLogin(e) {
                 console.log(e.userID);
                 Auth.getUserInfo(function(user){
                     $('#demoLoginMsgUsrName').text(user.name + "'s Bucketlist");
                     $('#demoLoginMsg').show();
                 });
-                var accessToken = FB.getAuthResponse()['accessToken'];
+                accessToken = FB.getAuthResponse()['accessToken'];
 
                 console.log(accessToken);
-                var nom = new Nom(accessToken);
-
-                var bucket_id;
-                nom.Bucket.getBuckets(function(a){
-                    console.log('getting buckets');
-                    if (a.success) {
-                        bucket_id = a.result[0].id;
-                    } else {
-                        nom.Bucket.addBucket(user.name, "hungry", function(b) {
-                            console.log(b);
-                        });
-                    }
-                });
-                nom.Bucket.getItems(bucket_id, function(a) {
-                    console.log(a);
-                    a.forEach(function(restaurant) {
-                        $('#restaurants').append()
-                    });
-                });
             }
 
 
@@ -63,6 +46,43 @@
 
             document.body.addEventListener("onFBLogin", onLogin, false);
             document.body.addEventListener("onFBLogout", onLogout, false);
+
+            $(document).ready(function() {
+                console.log("in here");
+                accessToken = FB.getAuthResponse()['accessToken'];
+                var nom = new Nom(accessToken);
+
+                var bucket_id;
+                nom.Bucket.getBuckets(function(a){
+                    console.log('getting buckets');
+                    console.log(a);
+                    if (a.success) {
+                        console.log("in here");
+                        bucket_id = a.result[0].id;
+                    } else {
+                        console.log("was not success");
+                        nom.Bucket.addBucket(user.name, "hungry", function(b) {
+                            bucket_id = b.result;
+                        });
+                    }
+
+                    nom.Bucket.getItems(bucket_id, function(a) {
+                        console.log("getting items")
+                        a.result.forEach(function(restaurant) {
+                            console.log(restaurant);
+
+                            $.ajax({
+                                url: "http://api.fbl.vidhucraft.com/search/id/" + restaurant,
+                                dataType: "jsonp",
+                                success: function (response) {
+                                    $('#restaurants').append("<div class='item'><li><input id='" + restaurant + "' type='checkbox' value='" + response.name + "'> ");
+                                    $('#restaurants').append("<label for='" + restaurant + "'>" + response.name + "</label> </li></div>");
+                                }
+                            });
+                        });
+                    });
+                });
+            });
         </script>
     </body>
 </html>
