@@ -39,7 +39,8 @@ var Auth = (function () {
         },
         getUserInfo: function (callback) {
             FB.api('/me', callback);
-        }
+        },        
+        onFbLoadEvent: new CustomEvent('onFBSdkLoad')
     };
 })();
 
@@ -64,4 +65,5 @@ window.fbAsyncInit = function () {
     });
 
     Auth.init();
+    document.body.dispatchEvent(Auth.onFbLoadEvent);
 };
