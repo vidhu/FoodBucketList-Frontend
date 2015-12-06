@@ -83,6 +83,7 @@
                 $(":checkbox").change(function() {
                     nom.Bucket.deleteItem(bucket_id, this.id, function(a) {
                         console.log("deleted " + this.id);
+                        $("#items label").wrap("<strike>");
                     });
                 });
             }
