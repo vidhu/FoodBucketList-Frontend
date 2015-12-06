@@ -1,13 +1,14 @@
 var Nom = function(accessToken){
     
-    var endPoint = "http://api.fbl.vidhucraft.com";
+    //var endPoint = "http://api.fbl.vidhucraft.com";
+    var endPoint = "http://local.nom.vidhucraft.com/backend/public_html";
     
     var makeRequest = function(resource, method, data, callback){
         $.ajax({
             url: endPoint + resource,
             type: method,
             data: data,
-            dataType: "jsonp",
+            dataType: "json",
             success: function (data) {
                 callback(data);
             }
