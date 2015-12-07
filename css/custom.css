@@ -59,12 +59,6 @@ input-mini{
     color: white;
 }
 
-.navbar-custom .navbar-nav > .active > a, .navbar-custom .navbar-nav > .active >   
-a:hover, .navbar-custom .navbar-nav > .active > a:focus {
-    color: white; /*BACKGROUND color for active*/
-    background-color: #030033;
-}
-
 .navbar-custom .navbar-header > a {
     color: black;
     font-size: 120%;
@@ -89,6 +83,17 @@ a:hover, .navbar-custom .navbar-nav > .active > a:focus {
 .nav > li > a:focus {
     text-decoration: none;
     background-color: transparent; /*Change rollover cell color here*/
+}
+
+.nav.navbar-nav > li.active > a{
+  font-weight: bold;
+  background-color: transparent;
+  color:black;
+}
+
+.nav-navbar-nav > li.active>a:hover {
+   background-color:transparent;
+  color:black;
 }
 
 
@@ -124,4 +129,5 @@ input[type=submit]
 #map{
     max-width: 50%; 
     max-height: auto;
+
 }
