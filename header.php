@@ -13,13 +13,11 @@
                 <li class="divider-vertical"></li>
                 <li><a id="logout_button" href="#" onclick="Auth.logout()" style="display: none;">Log Out</a></li>
                 <li class="divider-vertical"></li>
-                <li><a href="user_account.html">Account</a></li>
+                <li><a href="friends.php">Friends</a></li>
                 <li class="divider-vertical"></li>
-                <li><a href="friends.html">Friends</a></li>
+                <li><a href="Achievements.php">Achievements</a></li>
                 <li class="divider-vertical"></li>
-                <li><a href="Achievements.html">Achievements</a></li>
-                <li class="divider-vertical"></li>
-                <li><a href="list.php">Your Bucket List</a></li>
+                <li><a href="index.php">Your Bucket List</a></li>
             </ul>
 
             <div class="navbar-form navbar-right form-group">
