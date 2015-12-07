@@ -26,8 +26,11 @@
 
                         </ul>
                     </div>
-                    <a class="btn btn-success btn-sm pull-left js-savebucketlist" href="#">Save</a>
+                    <a class="btn btn-success btn-sm js-savebucketlist" href="#">Save</a>
                 </div>
+            </div>
+            <div class="progress">
+                <div class="progress-bar js-achievementbar" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="10" style="width:0%"></div>
             </div>
             <img src="img/burger.png" alt="" class='img-fix'/>
 
@@ -42,6 +45,10 @@
                         $('.js-username').text(user.name + "'s bucketlist");
                     });
 
+                    //Get Achievements
+                    nom.Achievement.getAchievement(function(r){
+                       updateProgressbar(r.result);
+                    });
 
                     //Get user's buckets AND Get items in bucket
                     nom.Bucket.getBuckets(function (r) {
@@ -73,16 +80,23 @@
                     $('.js-loggedin').hide();
                 }
 
-
+                function updateProgressbar(achievement){
+                    $('.js-achievementbar').css('width', achievement%10*10+"%");
+                    $('.js-achievementbar').text("Level " + Math.floor(achievement/10) + " " + achievement%10*10 + "%");
+                }
+                
                 $(document).ready(function () {
-                    $(".js-savebucketlist").click(function(){
+                    $(".js-savebucketlist").click(function () {
                         var listItems = $(".js-bucketlistitems input");
-                        listItems.each(function(i, e){
+                        listItems.each(function (i, e) {
                             var businessID = e.getAttribute('data-businessID');
-                            if(e.checked){
-                                nom.Bucket.deleteItem(window.userBucketId, businessID, function(r){
+                            if (e.checked) {
+                                nom.Bucket.deleteItem(window.userBucketId, businessID, function (r) {
                                     console.log("Deleted " + businessID);
-                                    //$(".js-bucketlistitems li")[i].hide();
+                                    nom.Achievement.incAchievement(function (r) {
+                                        console.log("Achievements is now: " + r.result);
+                                        updateProgressbar(r.result);
+                                    });
                                 });
                             }
                         });
