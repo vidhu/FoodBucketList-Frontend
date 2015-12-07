@@ -30,7 +30,7 @@
                         if (friends.data.length > 0) {
                             console.log("YAY FRIENDS");
                             friends.data.forEach(function(friend) {
-                                $('ul').append("<li><a href='./list.php?id=" + friend.id + "'>" + friend.name + "</a></li>")
+                                $('ul').append("<li>" + friend.name + "/li>")
                             });
                         } else {
                             console.log("no friends");
