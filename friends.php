@@ -14,43 +14,68 @@
     </head>
     <body>
         <?php include_once('header.php'); ?>
-        <header class="panel-heading">
-            <span class='js-username'></span>
-        </header>
 
-        <ul></ul>
+        <div class="container">
+            <div class="panel row">
+                <header class="panel-heading">
+                    <span>Your friend list</span>
+                </header>
+                <div class="panel-body">
+                    <div class="tasks-widget">
+                        <ul class="task-list">
+                            
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+
+        <div id="templates" style="display: none;">
+            <div class="list-item">
+                <li>
+                    <div class="task-title">
+                        <span class="glyphicon glyphicon-user"></span>
+                        <span class="task-title-sp">Business Name</span>
+                    </div>
+                </li>
+            </div>
+        </div>
 
         <script type="text/javascript">
-        function onFbSDKLoad(e){
-            console.log("sdk loaded");
-            FB.getLoginStatus(function(response) {
-                if (response.status === 'connected') {
+            function onFbSDKLoad(e) {
+                console.log("sdk loaded");
+                FB.getLoginStatus(function (response) {
+                    if (response.status === 'connected') {
 
-                    Auth.getUserInfo(function (user) {
-                        $('.js-username').text(user.name + "'s Friends");
-                    });
+                        Auth.getUserInfo(function (user) {
+                            $('.js-username').text(user.name + "'s Friends");
+                        });
 
-                    console.log("logged in");
-                    FB.api('/me/friends', function(friends) {
-                        console.log("friends: ");
-                        console.log(friends);
-                        if (friends.data.length > 0) {
-                            console.log("YAY FRIENDS");
-                            friends.data.forEach(function(friend) {
-                                $('ul').append("<li>" + friend.name + "</li>")
-                            });
-                        } else {
-                            console.log("no friends");
-                            $('h1').append("No friends :'(");
-                        }
-                    });
-                } else {
-                    console.log("needs to log in");
-                }
-            });
-        }
+                        console.log("logged in");
+                        FB.api('/me/friends', function (friends) {
+                            console.log("friends: ");
+                            console.log(friends);
+                            if (friends.data.length > 0) {
+                                console.log("YAY FRIENDS");
+                                friends.data.forEach(function (friend) {
+                                    var item = $('#templates .list-item li').clone();
+                                    item.find('.task-title-sp').html(friend.name);
+                                    $('.tasks-widget ul').append(item);
+                                    //$('ul').append("<li>" + friend.name + "</li>")
+                                });
+                            } else {
+                                console.log("no friends");
+                                $('h1').append("No friends :'(");
+                            }
+                        });
+                    } else {
+                        console.log("needs to log in");
+                    }
+                });
+            }
 
-        document.body.addEventListener("onFBSdkLoad", onFbSDKLoad, false);
+            document.body.addEventListener("onFBSdkLoad", onFbSDKLoad, false);
         </script>
     </body>
 </html>
