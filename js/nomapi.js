@@ -60,7 +60,7 @@ var Nom = function(accessToken){
             makeRequest(resource, method, data, callback);
         },
         deleteBucket: function(id, callback){
-            var resource = "/bucket/"+id;
+            var resource = "/bucket/"+id+"?accessToken="+accessToken;
             var method = "DELETE";
             var data = {
                 accessToken: accessToken
@@ -84,7 +84,7 @@ var Nom = function(accessToken){
             makeRequest(resource, method, data, callback);
         },
         deleteItem: function(id, businessID, callback){
-            var resource = "/bucket/"+id+"/"+businessID;
+            var resource = "/bucket/"+id+"/"+businessID+"?accessToken="+accessToken;
             var method = "DELETE";
             var data = {
                 accessToken: accessToken
