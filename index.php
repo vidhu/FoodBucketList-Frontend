@@ -22,70 +22,92 @@
 
                 <div class="panel-body">
                     <div class="task-content">
-                        <ul class="task-list">
-                            
+                        <ul class="task-list js-bucketlistitems">
+
                         </ul>
                     </div>
-                    <a class="btn btn-success btn-sm pull-left" href="#">Save</a>
+                    <a class="btn btn-success btn-sm pull-left js-savebucketlist" href="#">Save</a>
+                </div>
             </div>
-        </div>
-        <img src="img/burger.png" alt="" class='img-fix'/>
+            <img src="img/burger.png" alt="" class='img-fix'/>
 
 
-        <script type="text/javascript">
-            var nom;
-            function onLogin(e) {
-                nom = new Nom(Auth.getAccessToken());
+            <script type="text/javascript">
+                var nom;
+                function onLogin(e) {
+                    nom = new Nom(Auth.getAccessToken());
 
-                //Get and display username
-                Auth.getUserInfo(function (user) {
-                    $('.js-username').text(user.name + "'s bucketlist");
-                });
-                
-                
-                //Get user's buckets AND Get items in bucket
-                nom.Bucket.getBuckets(function(r){
-                    nom.Bucket.getItems(r.result[0].id, function(r){
-                        r.result.forEach(addBucketItems);
+                    //Get and display username
+                    Auth.getUserInfo(function (user) {
+                        $('.js-username').text(user.name + "'s bucketlist");
+                    });
+
+
+                    //Get user's buckets AND Get items in bucket
+                    nom.Bucket.getBuckets(function (r) {
+                        window.userBucketId = r.result[0].id;
+                        nom.Bucket.getItems(r.result[0].id, function (r) {
+                            r.result.forEach(addBucketItems);
+                        });
+                    });
+
+
+                    //Finally display the bucket list
+                    $('.js-loggedin').show();
+                }
+
+                //Add items to the bucket list
+                function addBucketItems(element, index, array) {
+                    nom.Search.getBusinessInfo(element, function (business) {
+                        var item = $('#templates .bucketListItem').clone();
+                        item.find('.businessName').attr("href", "/restuarant?id=" + business.id);
+                        item.find('.businessName').find("span").html(business.name);
+                        item.find('.task-checkbox').find("input").attr('data-businessID', business.id);
+                        $('.task-list').append(item);
+                    });
+
+                }
+
+
+                function onLogout(e) {
+                    $('.js-loggedin').hide();
+                }
+
+
+                $(document).ready(function () {
+                    $(".js-savebucketlist").click(function(){
+                        var listItems = $(".js-bucketlistitems input");
+                        
+                        listItems.each(function(i, e){
+                            var businessID = e.getAttribute('data-businessID');
+                            if(e.checked){
+                                nom.Bucket.deleteItem(window.userBucketId, businessID, function(r){
+                                    console.log("Deleted " + businessID);
+                                });
+                            }
+                        });
+                        
                     });
                 });
-                
-                
-                //Finally display the bucket list
-                $('.js-loggedin').show();
-            }
 
-            //Add items to the bucket list
-            function addBucketItems(element, index, array){
-                nom.Search.getBusinessInfo(element, function(business){
-                    var item = $('#templates .bucketListItem').clone();
-                    item.find('.businessName').html(business.name).data("business", { id: business.id});
-                    $('.task-list').append(item);
-                });
-                
-            }
-            
+                document.body.addEventListener("onFBLogin", onLogin, false);
+                document.body.addEventListener("onFBLogout", onLogout, false);
+            </script>
 
-            function onLogout(e) {
-                $('.js-loggedin').hide();
-            }
-      
-
-            document.body.addEventListener("onFBLogin", onLogin, false);
-            document.body.addEventListener("onFBLogout", onLogout, false);
-        </script>
-        
-        <!-- Used for storing html templates for use in jQuery -->
-        <div id="templates" style="display: none">
-            <li class="bucketListItem">
-                <div class="task-checkbox">
-                    <input type="checkbox" class="list-child" value="">
-                    <span
-                </div>
-                <div class="task-title">
-                    <span class="task-title-sp" data-businessID></span>
-                </div>
-            </li>
-        </div>
+            <!-- Used for storing html templates for use in jQuery -->
+            <div id="templates" style="display: none">
+                <li class="bucketListItem">
+                    <div class="task-checkbox">
+                        <input type="checkbox" class="list-child" value="">
+                    </div>
+                    <div class="task-title">
+                        <a href="sdf" class="businessName" target="_blank">
+                            <span class="task-title-sp">
+                                Business Name
+                            </span>
+                        </a>
+                    </div>
+                </li>
+            </div>
     </body>
 </html>
