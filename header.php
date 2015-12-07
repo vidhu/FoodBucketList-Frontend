@@ -45,6 +45,10 @@
 <script src="js/nomapi.js" type="text/javascript"></script>
 <script src="js/callChain.js" type="text/javascript"></script>
 <script type="text/javascript">
+    $(document).click(function(){
+        $('.searchresults').hide();
+    });
+    
     $('.search').on('input propertychange paste', function () {
         if ($('.search').val().length === 0) {
             $('.searchresults').hide();
