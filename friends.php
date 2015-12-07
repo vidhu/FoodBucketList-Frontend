@@ -27,7 +27,7 @@
                 if (response.status === 'connected') {
 
                     Auth.getUserInfo(function (user) {
-                        $('.js-username').text(user.name + "'s bucketlist");
+                        $('.js-username').text(user.name + "'s Friends");
                     });
 
                     console.log("logged in");
