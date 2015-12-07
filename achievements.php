@@ -24,7 +24,7 @@
             </div>
 
         <div class="progress">
-            <div class="progress-bar js-achievementbar js-loggedin" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="10" style="width:0%"></div>
+            <div class="progress-bar progress-bar-striped active js-achievementbar js-loggedin" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="10" style="width:0%"></div>
         </div>
 
         <script type='text/javascript'>
