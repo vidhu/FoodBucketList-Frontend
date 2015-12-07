@@ -87,8 +87,11 @@
                         $('#info').append("<strong>Rating:</strong> " + response.rating + "<br/>");
                         $('#info').append("<strong>Review count: </strong>" + response.review_count + "<br/>");
                         $('#info').append("<strong>Phone number: </strong>" + response.display_phone + "<br/>");
-                        $('#info').append("<strong>Address: </strong><br/>" + response.location.display_address[0] + "<br/>");
-                        $('#info').append(response.location.display_address[1] + "<br/><br/>");
+                        $('#info').append("<strong>Address: </strong><br/>");
+                        response.location.display_address.forEach(function(addr) {
+                            $('#info').append(addr + "<br/>");
+                        })
+                        $('#info').append("<br/>");
                         if (response.reviews.length > 0) {
                             $('#info').append("<strong>Reviews:</strong></br>");
 
