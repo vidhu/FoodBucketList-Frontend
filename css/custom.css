@@ -131,3 +131,7 @@ input[type=submit]
     max-height: auto;
 
 }
+
+.progress {
+    margin: 0;
+}

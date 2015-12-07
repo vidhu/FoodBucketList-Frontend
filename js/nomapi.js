@@ -29,6 +29,25 @@ var Nom = function(accessToken){
         }
     };
     
+    this.Achievement = {
+        getAchievement: function(callback){
+            var resource = "/achievement";
+            var method = "GET";
+            var data = {
+                accessToken: accessToken
+            };
+            makeRequest(resource, method, data, callback);
+        },
+        incAchievement: function(callback){
+            var resource = "/achievement";
+            var method = "POST";
+            var data = {
+                accessToken: accessToken
+            };
+            makeRequest(resource, method, data, callback);
+        }
+    }
+    
     //Bucket API
     this.Bucket = {
         getBuckets: function(callback){
