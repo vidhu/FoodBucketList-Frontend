@@ -14,8 +14,10 @@
     </head>
     <body>
         <?php include_once('header.php'); ?>
+        <header class="panel-heading">
+            <span class='js-username'></span>
+        </header>
 
-        <h1></h1>
         <ul></ul>
 
         <script type="text/javascript">
@@ -23,6 +25,11 @@
             console.log("sdk loaded");
             FB.getLoginStatus(function(response) {
                 if (response.status === 'connected') {
+
+                    Auth.getUserInfo(function (user) {
+                        $('.js-username').text(user.name + "'s bucketlist");
+                    });
+
                     console.log("logged in");
                     FB.api('/me/friends', function(friends) {
                         console.log("friends: ");
