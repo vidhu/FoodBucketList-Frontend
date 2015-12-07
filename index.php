@@ -60,7 +60,7 @@
                 function addBucketItems(element, index, array) {
                     nom.Search.getBusinessInfo(element, function (business) {
                         var item = $('#templates .bucketListItem').clone();
-                        item.find('.businessName').attr("href", "/restuarant?id=" + business.id);
+                        item.find('.businessName').attr("href", "/restuarant.php?id=" + business.id);
                         item.find('.businessName').find("span").html(business.name);
                         item.find('.task-checkbox').find("input").attr('data-businessID', business.id);
                         $('.task-list').append(item);
