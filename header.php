@@ -74,7 +74,7 @@
                     $('.searchresults').show();
                 }
                 for (var b in response) {
-                    $('.searchresults').append('<li><a href="/restaurant.php?id=' + encodeURIComponent(response[b].id) + '">' + response[b].name + '</a></li>');
+                    $('.searchresults').append('<li><a href="restaurant.php?id=' + encodeURIComponent(response[b].id) + '">' + response[b].name + '</a></li>');
                 }
             }
         });
