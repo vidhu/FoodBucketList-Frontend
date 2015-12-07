@@ -9,15 +9,15 @@
         <div class="collapse navbar-collapse" id="navbar">
             
             <ul class="nav navbar-nav">
-                <li><a id="login_button" href="#" onclick="Auth.login()">Log in</a></li>
+                <li><a id="login_button" href="#" onclick="Auth.login()" data-toggle='tab'>Log in</a></li>
                 <li class="divider-vertical"></li>
                 <li><a id="logout_button" href="#" onclick="Auth.logout()" style="display: none;">Log Out</a></li>
                 <li class="divider-vertical"></li>
-                <li><a href="friends.php">Friends</a></li>
+                <li><a href="friends.php" data-toggle='tab'>Friends</a></li>
                 <li class="divider-vertical"></li>
-                <li><a href="Achievements.php">Achievements</a></li>
+                <li><a href="Achievements.php" data-toggle='tab'>Achievements</a></li>
                 <li class="divider-vertical"></li>
-                <li><a href="index.php">Your Bucket List</a></li>
+                <li><a href="index.php" data-toggle='tab'>Your Bucket List</a></li>
             </ul>
 
             <div class="navbar-form navbar-right form-group">
