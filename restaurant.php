@@ -68,7 +68,7 @@
             };
 
             var id = getUrlParameter('id');
-
+            var userBucketitems = [];
             $(document).ready(function () {
 
                 $("#add").click(function () {
@@ -87,7 +87,8 @@
 
                             var id = getUrlParameter('id');
                             nom.Bucket.addItem(bucket_id, id, function (a) {
-                                alert("Added");
+                                $("#add").addClass("btn-success");
+                                $("#add").removeClass("btn-default");
                                 console.log('added');
                             });
 
@@ -143,6 +144,23 @@
                     })
                 }
             });
+
+            function onLogin(e) {
+                var nom = new Nom(Auth.getAccessToken());
+                nom.Bucket.getBuckets(function (r) {
+                    window.userBucketId = r.result[0].id;
+                    nom.Bucket.getItems(r.result[0].id, function (r) {
+                        r.result.forEach(function(element, index, array){
+                            if(id === element){
+                                $("#add").addClass("btn-success");
+                                $("#add").removeClass("btn-default");
+                            }
+                        });
+                    });
+                });
+            }
+
+            document.body.addEventListener("onFBLogin", onLogin, false);
         </script>
     </body>
 </html>
