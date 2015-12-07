@@ -20,15 +20,16 @@
             <div class="row">
                 
                 
-                <div id="info" class="col-md-6">
+                <div id="info" class="col-xs-3 col-md-6">
                 <h2><div style="position: relative; float: right; text-align: left">
-                <input id="add" type="submit" class = "btn btn-default" value="Add" style="height:40px; width:55px"><br/>
+                <input id="add" type="submit" class = "btn btn-default" value="Add" style="height:40px; width:57px"><br/>
                 </div></h2>
                 	
                 </div>
                 
-                <div id="buffer" class="col-md-1"></div>
-                <div id="map" style="width: 400px; height: 300px; float: center" class="col-md-3"></div>
+                <div id="buffer" class="col-xs-6 col-md-3"></div>
+                <h3></h3>
+                <div id="map" style="width: 500px; height: 300px; float: right; position: relative;" class="col-md-6"></div>
             </div>
 
             <script type="text/javascript">
