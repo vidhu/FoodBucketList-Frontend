@@ -15,7 +15,7 @@
     <body>
         <?php include_once('header.php'); ?>
 
-        <div class="container">
+        <div class="container js-loggedin">
             <div class="panel row">
                 <header class="panel-heading">
                     <span>Your friend list</span>
@@ -73,9 +73,20 @@
                         console.log("needs to log in");
                     }
                 });
+    
+            }
+
+            function onLogin(e) {
+                $('.js-loggedin').show();
+            }
+
+            function onLogout(e) {
+                $('.js-loggedin').hide();
             }
 
             document.body.addEventListener("onFBSdkLoad", onFbSDKLoad, false);
+            document.body.addEventListener("onFBLogin", onLogin, false);
+            document.body.addEventListener("onFBLogout", onLogout, false);        
         </script>
     </body>
 </html>

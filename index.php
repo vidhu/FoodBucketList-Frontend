@@ -26,7 +26,7 @@
 
                         </ul>
                     </div>
-                    <a class="btn btn-success btn-sm js-savebucketlist" href="#">Save</a>
+                    <a class="btn btn-success btn-sm js-savebucketlist" href="#">Update</a>
                 </div>
             </div>
             <div class="progress">
