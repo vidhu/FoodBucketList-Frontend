@@ -24,6 +24,10 @@
                 top: -3px;
                 font-weight: bold;
             }
+            .float-clear {
+                height: 0px;
+                clear: both;
+            }
         </style>
         <script type="text/javascript" 
         src="http://maps.google.com/maps/api/js?sensor=false"></script>
@@ -36,6 +40,7 @@
                 <header class="panel-heading">
                     <span class='business-name'></span>
                     <button id="add" class="btn btn-default" type="submit">Add</button>
+                    <div class="float-clear"></div>
                 </header>
                 <div class="panel-body">
                     <div id="info" class="col-md-8">
