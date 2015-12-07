@@ -13,8 +13,6 @@
                 <li class="divider-vertical"></li>
                 <li><a id="logout_button" href="#" onclick="Auth.logout()" style="display: none;">Log Out</a></li>
                 <li class="divider-vertical"></li>
-                <li><a href="user_account.html">Account</a></li>
-                <li class="divider-vertical"></li>
                 <li><a href="friends.html">Friends</a></li>
                 <li class="divider-vertical"></li>
                 <li><a href="Achievements.html">Achievements</a></li>
