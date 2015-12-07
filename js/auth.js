@@ -39,6 +39,10 @@ var Auth = (function () {
             FB.logout(function (response) {
                 statusChange(response);
             });
+        }, post: function (message, callback) {
+            FB.api('/me/feed', 'post', {
+                message: message
+            }, callback);
         },
         getUserInfo: function (callback) {
             FB.api('/me', callback);
