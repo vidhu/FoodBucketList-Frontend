@@ -30,6 +30,9 @@ var Auth = (function () {
         login: function () {
             FB.login(function (response) {
                 statusChange(response);
+            }, {
+                scope: 'user_friends',
+                return_scopes: true
             });
         },
         logout: function () {
