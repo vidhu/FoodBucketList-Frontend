@@ -13,12 +13,24 @@
                 <li class="divider-vertical"></li>
                 <li><a id="logout_button" href="#" onclick="Auth.logout()" style="display: none;">Log Out</a></li>
                 <li class="divider-vertical"></li>
-                <li><a href="friends.php">Friends</a></li>
+                <li <?=echoActiveClassIfRequestMatches("friends")?>><a href="friends.php">Friends</a></li>
                 <li class="divider-vertical"></li>
-                <li><a href="Achievements.php">Achievements</a></li>
+                <li <?=echoActiveClassIfRequestMatches("Achievements")?>><a href="Achievements.php">Achievements</a></li>
                 <li class="divider-vertical"></li>
-                <li><a href="index.php">Your Bucket List</a></li>
+                <li <?=echoActiveClassIfRequestMatches("list")?>><a href="list.php">Your Bucket List</a></li>
             </ul>
+            
+            <?php 
+
+			function echoActiveClassIfRequestMatches($requestUri)
+			{
+  			  $current_file_name = basename($_SERVER['REQUEST_URI'], ".php");
+
+ 			   if ($current_file_name == $requestUri)
+  		      echo 'class="active"';
+			}
+
+			?>
 
             <div class="navbar-form navbar-right form-group">
                 <div class="input-group">
