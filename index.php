@@ -77,16 +77,16 @@
                 $(document).ready(function () {
                     $(".js-savebucketlist").click(function(){
                         var listItems = $(".js-bucketlistitems input");
-                        
                         listItems.each(function(i, e){
                             var businessID = e.getAttribute('data-businessID');
                             if(e.checked){
                                 nom.Bucket.deleteItem(window.userBucketId, businessID, function(r){
                                     console.log("Deleted " + businessID);
+                                    //$(".js-bucketlistitems li")[i].hide();
                                 });
                             }
                         });
-                        
+                        $(".task-list").find('input:checkbox:checked').closest('li').hide();
                     });
                 });
 
