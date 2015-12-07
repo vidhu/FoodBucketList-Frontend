@@ -54,8 +54,10 @@
             $('.js-achievementbar').text("Level " + Math.floor(achievement/10) + " " + achievement%10*10 + "%");
             if (Math.floor(achievement/10) > 5) {
                 $('.panel-body').append("<h3>" + levels[5] + "<h3>");
+                $('.panel-body').append("<h4>Highest level<h4>");
             } else {
                 $('.panel-body').append("<h3>" + levels[Math.floor(achievement/10)] + "<h3>");
+                $('.panel-body').append("<h4>" + achievement%10 + " more restaurants to next level<h4>");
                 console.log(Math.floor(achievement/10));
             }
         }
