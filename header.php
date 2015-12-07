@@ -17,7 +17,7 @@
                 <li class="divider-vertical"></li>
                 <li <?=echoActiveClassIfRequestMatches("Achievements")?>><a href="Achievements.php">Achievements</a></li>
                 <li class="divider-vertical"></li>
-                <li <?=echoActiveClassIfRequestMatches("list")?>><a href="list.php">Your Bucket List</a></li>
+                <li <?=echoActiveClassIfRequestMatches("list")?>><a href="index.php">Your Bucket List</a></li>
             </ul>
             
             <?php 
