@@ -44,46 +44,50 @@
             
             function onFbSDKLoad(e){
                 console.log("sdk loaded");
-                console.log(FB.getAccessToken());
-                accessToken = FB.getAccessToken();
-                var nom = new Nom(accessToken);
+                FB.getLoginStatus(function(response) {
+                    if (response.status === 'connected') {
+                        console.log(FB.getAccessToken());
+                        accessToken = FB.getAccessToken();
+                        var nom = new Nom(accessToken);
 
-                var bucket_id;
-                nom.Bucket.getBuckets(function(a){
-                    console.log('getting buckets');
-                    console.log(a);
-                    if (a.success) {
-                        console.log("in here");
-                        bucket_id = a.result[0].id;
-                    } else {
-                        console.log("was not success");
-                        nom.Bucket.addBucket(user.name, "hungry", function(b) {
-                            bucket_id = b.result;
-                        });
-                    }
+                        var bucket_id;
+                        nom.Bucket.getBuckets(function(a){
+                            console.log('getting buckets');
+                            console.log(a);
+                            if (a.success) {
+                                console.log("in here");
+                                bucket_id = a.result[0].id;
+                            } else {
+                                console.log("was not success");
+                                nom.Bucket.addBucket(user.name, "hungry", function(b) {
+                                    bucket_id = b.result;
+                                });
+                            }
 
-                    nom.Bucket.getItems(bucket_id, function(a) {
-                        console.log("getting items")
-                        a.result.forEach(function(restaurant) {
-                            console.log(restaurant);
+                            nom.Bucket.getItems(bucket_id, function(a) {
+                                console.log("getting items")
+                                a.result.forEach(function(restaurant) {
+                                    console.log(restaurant);
 
-                            $.ajax({
-                                url: "http://api.fbl.vidhucraft.com/search/id/" + restaurant,
-                                dataType: "jsonp",
-                                success: function (response) {
-                                    $('#restaurants').append("<div class='item'><li><input class='check' id='" + restaurant + "' type='checkbox' value='" + response.name + "'> ");
-                                    $('#restaurants').append("<label for='" + restaurant + "'>" + response.name + "</label> </li></div>");
-                                }
+                                    $.ajax({
+                                        url: "http://api.fbl.vidhucraft.com/search/id/" + restaurant,
+                                        dataType: "jsonp",
+                                        success: function (response) {
+                                            $('#restaurants').append("<div class='item'><li><input class='check' id='" + restaurant + "' type='checkbox' value='" + response.name + "'> ");
+                                            $('#restaurants').append("<label for='" + restaurant + "'>" + response.name + "</label> </li></div>");
+                                        }
+                                    });
+                                });
                             });
                         });
-                    });
-                });
-                
-                $(":checkbox").change(function() {
-                    nom.Bucket.deleteItem(bucket_id, this.id, function(a) {
-                        console.log("deleted " + this.id);
-                        $("#items label").wrap("<strike>");
-                    });
+                        
+                        $(":checkbox").change(function() {
+                            nom.Bucket.deleteItem(bucket_id, this.id, function(a) {
+                                console.log("deleted " + this.id);
+                                $("#items label").wrap("<strike>");
+                            });
+                        });
+                    }
                 });
             }
 
