@@ -15,6 +15,20 @@ var Nom = function(accessToken){
         });
     };
     
+    //Search API
+    this.Search = {
+        search: function(keyword, callback){
+            var resource = encodeURI("/search/"+keyword);
+            var method = "GET";
+            makeRequest(resource, method, null, callback);
+        },
+        getBusinessInfo: function(businessID, callback){
+            var resource = encodeURI("/search/id/"+businessID);
+            var method = "GET";
+            makeRequest(resource, method, null, callback);
+        }
+    };
+    
     //Bucket API
     this.Bucket = {
         getBuckets: function(callback){

@@ -39,7 +39,10 @@ var Auth = (function () {
         },
         getUserInfo: function (callback) {
             FB.api('/me', callback);
-        },        
+        },
+        getAccessToken: function(){
+            return FB.getAccessToken();
+        },
         onFbLoadEvent: new CustomEvent('onFBSdkLoad')
     };
 })();

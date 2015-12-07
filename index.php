@@ -4,7 +4,8 @@
         <meta charset = "utf-8">
         <title>Food Bucketlist</title>
 
-        <!-- External Bootstrap 3.3.2 Framework to help with styling -->
+        <!-- External Bootstrap 3.3.2 Framework to help with styling -->        
+        <link rel="stylesheet" href="http://thevectorlab.net/flatlab/css/bootstrap-reset.css" />
         <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css" />
         <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/select2/4.0.0/css/select2.min.css" />
         <link rel="stylesheet" href="css/custom.css" />
@@ -13,89 +14,78 @@
         <?php include_once('header.php'); ?>
 
         <div class="container">
-            <!-- Just demonstrating event listeners -->
-            <div id="demoLoginMsg" style="display: none;">
-                <h1 id="demoLoginMsgUsrName"></h1>
-                <div class="check-container">
-                    <ul id="restaurants">
-                    </ul>
-                </div>   
-            </div>    
+            <div class="js-loggedin panel tasks-widget">
+                <header class="panel-heading">
+                    <span class='js-username'></span>
+                </header>
+
+
+                <div class="panel-body">
+                    <div class="task-content">
+                        <ul class="task-list">
+                            
+                        </ul>
+                    </div>
+                    <a class="btn btn-success btn-sm pull-left" href="#">Save</a>
+            </div>
         </div>
-        
+        <img src="img/burger.png" alt="" class='img-fix'/>
 
 
         <script type="text/javascript">
-            //Page specific functions
-            var accessToken;
+            var nom;
             function onLogin(e) {
-                console.log(e.userID);
-                Auth.getUserInfo(function(user){
-                    $('#demoLoginMsgUsrName').text(user.name + "'s Bucketlist");
-                    $('#demoLoginMsg').show();
+                nom = new Nom(Auth.getAccessToken());
+
+                //Get and display username
+                Auth.getUserInfo(function (user) {
+                    $('.js-username').text(user.name + "'s bucketlist");
                 });
-                accessToken = FB.getAuthResponse()['accessToken'];
+                
+                
+                //Get user's buckets AND Get items in bucket
+                nom.Bucket.getBuckets(function(r){
+                    nom.Bucket.getItems(r.result[0].id, function(r){
+                        r.result.forEach(addBucketItems);
+                    });
+                });
+                
+                
+                //Finally display the bucket list
+                $('.js-loggedin').show();
             }
 
-
-            function onLogout(e) {
-                $('#demoLoginMsg').hide();
+            //Add items to the bucket list
+            function addBucketItems(element, index, array){
+                nom.Search.getBusinessInfo(element, function(business){
+                    var item = $('#templates .bucketListItem').clone();
+                    item.find('.businessName').html(business.name).data("business", { id: business.id});
+                    $('.task-list').append(item);
+                });
+                
             }
             
-            function onFbSDKLoad(e){
-                console.log("sdk loaded");
-                FB.getLoginStatus(function(response) {
-                    if (response.status === 'connected') {
-                        console.log(FB.getAccessToken());
-                        accessToken = FB.getAccessToken();
-                        var nom = new Nom(accessToken);
 
-                        var bucket_id;
-                        nom.Bucket.getBuckets(function(a){
-                            console.log('getting buckets');
-                            console.log(a);
-                            if (a.success) {
-                                console.log("in here");
-                                bucket_id = a.result[0].id;
-                            } else {
-                                console.log("was not success");
-                                nom.Bucket.addBucket(user.name, "hungry", function(b) {
-                                    bucket_id = b.result;
-                                });
-                            }
-
-                            nom.Bucket.getItems(bucket_id, function(a) {
-                                console.log("getting items")
-                                a.result.forEach(function(restaurant) {
-                                    console.log(restaurant);
-
-                                    $.ajax({
-                                        url: "http://api.fbl.vidhucraft.com/search/id/" + restaurant,
-                                        dataType: "jsonp",
-                                        success: function (response) {
-                                            $('#restaurants').append("<div class='item'><li><input class='check' id='" + restaurant + "' type='checkbox' value='" + response.name + "'> ");
-                                            $('#restaurants').append("<label for='" + restaurant + "'>" + response.name + "</label> </li></div>");
-                                        }
-                                    });
-                                });
-                            });
-                        });
-                        
-                        $(":checkbox").change(function() {
-                            nom.Bucket.deleteItem(bucket_id, this.id, function(a) {
-                                console.log("deleted " + this.id);
-                                $("#items label").wrap("<strike>");
-                            });
-                        });
-                    }
-                });
+            function onLogout(e) {
+                $('.js-loggedin').hide();
             }
+      
 
             document.body.addEventListener("onFBLogin", onLogin, false);
             document.body.addEventListener("onFBLogout", onLogout, false);
-            document.body.addEventListener("onFBSdkLoad", onFbSDKLoad, false);
-            
-
         </script>
+        
+        <!-- Used for storing html templates for use in jQuery -->
+        <div id="templates" style="display: none">
+            <li class="bucketListItem">
+                <div class="task-checkbox">
+                    <input type="checkbox" class="list-child" value="">
+                    <span
+                </div>
+                <div class="task-title">
+                    <span class="task-title-sp" data-businessID></span>
+                </div>
+            </li>
+        </div>
     </body>
 </html>

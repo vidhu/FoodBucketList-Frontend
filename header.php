@@ -1,4 +1,4 @@
-<nav class="navbar-custom">
+<nav class="navbar-custom white-bg">
     <div class="container-fluid">
         <!-- Using a list glyphicon as the logo -->
         <div class="navbar-header">
@@ -45,6 +45,7 @@
 <script src="https://cdn.rawgit.com/twitter/typeahead.js/master/dist/bloodhound.min.js" type="text/javascript"></script>
 <script src="js/auth.js" type="text/javascript"></script>
 <script src="js/nomapi.js" type="text/javascript"></script>
+<script src="js/callChain.js" type="text/javascript"></script>
 <script type="text/javascript">
     $('.search').on('input propertychange paste', function () {
         if ($('.search').val().length === 0) {

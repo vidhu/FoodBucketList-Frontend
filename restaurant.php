@@ -64,6 +64,13 @@
                             if (a.success) {
                                 console.log("in here");
                                 bucket_id = a.result[0].id;
+                                
+                                var id = getUrlParameter('id');
+                                nom.Bucket.addItem(bucket_id, id, function(a){
+                                    alert("Added");
+                                    console.log('added'); 
+                                });
+                                
                             } else {
                                 console.log("was not success");
                                 nom.Bucket.addBucket(user.name, "hungry", function(b) {
@@ -72,10 +79,7 @@
                             }
                         });
 
-                        var id = getUrlParameter('id');
-                        nom.Bucket.addItem(10, id, function(a){
-                            console.log('added'); 
-                        });
+                        
                     });
                 });
 
